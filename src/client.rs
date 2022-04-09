@@ -4,7 +4,7 @@ use crate::topic::Topic;
 use goauth::auth::JwtClaims;
 use goauth::scopes::Scope;
 use hyper::client::HttpConnector;
-use hyper_tls::HttpsConnector;
+use hyper_rustls::HttpsConnector;
 use smpl_jwt::Jwt;
 use std::fs;
 use std::str::FromStr;
@@ -182,6 +182,11 @@ impl Client {
 }
 
 fn setup_hyper() -> HyperClient {
-    let https = HttpsConnector::new();
+    let https = hyper_rustls::HttpsConnectorBuilder::new()
+        .with_native_roots()
+        .https_only()
+        .enable_http1()
+        .build();
+    // let https = HttpsConnector::new();
     Arc::new(hyper::Client::builder().build::<_, hyper::Body>(https))
 }

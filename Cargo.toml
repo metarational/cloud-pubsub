@@ -13,7 +13,6 @@ readme       =  "README.md"
 [dependencies]
 bytes         =  "1"
 hyper         =  "0.14"
-hyper-tls     =  "0.5"
 tokio         =  "1"
 goauth        =  "0.9"
 smpl_jwt      =  "0.6"
@@ -24,6 +23,7 @@ base64        =  "0.13"
 lazy_static   =  "1.4.0"
 rand          =  "0.8"
 log           =  "0.4"
+hyper-rustls = "0.23.0"
 
 [dev-dependencies]
 envy          =  "0.4"
